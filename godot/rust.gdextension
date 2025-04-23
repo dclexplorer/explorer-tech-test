@@ -16,3 +16,5 @@ web.release.wasm32 = "res://../rust/target/wasm32-unknown-emscripten/release/dcl
 
 android.release.arm64 = "res://../rust/target/aarch64-linux-android/release/libdclgodot.so"
 android.debug.arm64 = "res://../rust/target/aarch64-linux-android/debug/libdclgodot.so"
+ios.release.arm64 = "res://../rust/target/aarch64-apple-ios/release/libdclgodot.dylib"
+ios.debug.arm64 = "res://../rust/target/aarch64-apple-ios/debug/libdclgodot.dylib"
