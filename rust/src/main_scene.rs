@@ -1,4 +1,4 @@
-use godot::prelude::*;
+use godot::{engine::Label, prelude::*};
 
 #[cfg(feature = "use_comms")]
 use comms::*;
@@ -27,6 +27,9 @@ impl INode for Main {
 
     fn ready(&mut self) {
         godot_print!("Hello from Rust 1");
+
+        let mut label_node = self.base().get_node_as::<Label>("Label");
+        label_node.set_text("Hello from Rust and Godot 4.4.1!".into());
 
         #[cfg(feature = "use_comms")]
         {
