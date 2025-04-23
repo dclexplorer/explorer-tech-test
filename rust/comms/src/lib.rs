@@ -1,4 +1,5 @@
 use std::thread;
+use godot::log::{godot_error, godot_print};
 use tokio_tungstenite::connect_async;
 use tokio_tungstenite::tungstenite::Message;
 use url::Url;
@@ -55,7 +56,7 @@ async fn livekit_demo_async() {
     )
     .expect("Failed to encode token");
 
-    println!("Generated access token: {}", token);
+    godot_print!("Generated access token: {}", token);
 
     // Append the token as a query parameter to the LiveKit URL.
     let full_url = format!("{}?access_token={}", livekit_url, token);
@@ -65,7 +66,7 @@ async fn livekit_demo_async() {
     let (mut ws_stream, _) = connect_async(url)
         .await
         .expect("Failed to connect to LiveKit server");
-    println!("Connected to LiveKit server at {}", livekit_url);
+    godot_print!("Connected to LiveKit server at {}", livekit_url);
 
     // Optionally send a JSON join message.
     let join_request = json!({
@@ -77,23 +78,23 @@ async fn livekit_demo_async() {
         .send(Message::Text(join_request.to_string()))
         .await
         .expect("Failed to send join request");
-    println!("Join request sent");
+    godot_print!("Join request sent");
 
     // Listen for messages from the server.
     while let Some(message) = ws_stream.next().await {
         match message {
             Ok(Message::Text(text)) => {
-                println!("Received text message: {}", text);
+                godot_print!("Received text message: {}", text);
             }
             Ok(Message::Binary(data)) => {
-                println!("Received binary message: {:?}", data);
+                godot_print!("Received binary message: {:?}", data);
             }
             Ok(Message::Close(_)) => {
-                println!("Server closed the connection");
+                godot_print!("Server closed the connection");
                 break;
             }
             Err(e) => {
-                eprintln!("Error receiving message: {}", e);
+                godot_error!("Error receiving message: {}", e);
                 break;
             }
             _ => {}
@@ -103,6 +104,7 @@ async fn livekit_demo_async() {
 
 /// Synchronous library function that spawns a thread and runs the LiveKit demo in the background.
 pub fn run_livekit_demo_background() {
+    godot_print!("run_livekit_demo_background");
     // Spawn a new thread and "forget" its handle.
     thread::spawn(|| {
         // Create a new Tokio runtime within the thread.

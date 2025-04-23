@@ -494,6 +494,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "575f75dfd25738df5b91b8e43e14d44bda14637a58fae779fd2b064f8bf3e010"
 
 [[package]]
+name = "dclgodot"
+version = "0.1.0"
+dependencies = [
+ "comms",
+ "godot",
+ "runtime",
+]
+
+[[package]]
 name = "debugid"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -648,15 +657,6 @@ checksum = "33d852cb9b869c2a9b3df2f71a3074817f01e1844f839a144f5fcef059a4eb5d"
 dependencies = [
  "libc",
  "windows-sys 0.59.0",
-]
-
-[[package]]
-name = "explorer-tech-test"
-version = "0.1.0"
-dependencies = [
- "comms",
- "godot",
- "runtime",
 ]
 
 [[package]]

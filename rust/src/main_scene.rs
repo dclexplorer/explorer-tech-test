@@ -26,7 +26,7 @@ impl INode for Main {
     }
 
     fn ready(&mut self) {
-        godot_print!("Hello from Rust");
+        godot_print!("Hello from Rust 1");
 
         #[cfg(feature = "use_comms")]
         {

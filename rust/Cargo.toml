@@ -2,7 +2,7 @@
 members = ["comms", "runtime"]
 
 [package]
-name = "explorer-tech-test"
+name = "dclgodot"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.81"
@@ -29,9 +29,3 @@ all = ["use_comms", "use_runtime"]
 [workspace.dependencies]
 godot = { version = "0.1.3", features=["experimental-threads", "serde"] }
 tokio = { version = "1.40.0", features = ["full"] }
-
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
