@@ -1,0 +1,16 @@
+# Godot-specific files
+.import/
+export.cfg
+export_presets.cfg
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+
+# Editor settings (optional: ignore these if you don't want to sync editor settings)
+*.godot/
+android/

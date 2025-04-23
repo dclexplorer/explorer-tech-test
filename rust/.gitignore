@@ -1,0 +1,24 @@
+# Rust build output
+/target/
+
+# Rust package manager files
+**/*.rs.bk
+
+# Executables
+*.exe
+*.dll
+*.so
+*.dylib
+*.rlib
+
+# IDE/editor-specific files
+/.idea/
+/.vscode/
+/*.swp
+*.swo
+
+# macOS metadata
+.DS_Store
+
+# Backup files
+*~

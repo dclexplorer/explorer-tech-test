@@ -1,0 +1,10 @@
+[package]
+name = "runtime"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+
+deno_core = "0.307"
+deno_error = "0.5.6"

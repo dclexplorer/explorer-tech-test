@@ -1,0 +1,37 @@
+# The cargo flag "-Zbuild-std" is also required but this cannot yet be specified for specific
+# targets: https://github.com/rust-lang/cargo/issues/8733
+[target.wasm32-unknown-emscripten]
+rustflags = [
+    "-C", "link-args=-sSIDE_MODULE=2",
+    "-C", "link-args=-sUSE_PTHREADS=1",
+    "-C", "target-feature=+atomics,+bulk-memory,+mutable-globals",
+    "-Zlink-native-libraries=no",
+]
+
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.aarch64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.x86_64-apple-darwin]
+rustflags = ["-C", "link-args=-ObjC"]
+
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-args=-ObjC"]
+
+[target.aarch64-apple-ios]
+rustflags = ["-C", "link-args=-mios-version-min=12.0 -ObjC"]
+
+[target.aarch64-apple-ios-sim]
+rustflags = ["-C", "link-args=-mios-version-min=12.0 -ObjC"]
+
+[target.aarch64-linux-android]
+rustflags = [
+    "-C", "link-arg=-Wl,-Bstatic",
+    "-C", "link-arg=-lunwind",
+    "-C", "link-arg=-Wl,-Bdynamic",
+]
+
+[env]
+CARGO_FEATURE_CRT_STATIC = "ohyes"
